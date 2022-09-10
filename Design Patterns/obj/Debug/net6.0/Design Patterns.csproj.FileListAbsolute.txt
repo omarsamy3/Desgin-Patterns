@@ -1,0 +1,15 @@
+E:\A1Programming\Training Coding\Design Patterns\Design Patterns\bin\Debug\net6.0\Design Patterns.exe
+E:\A1Programming\Training Coding\Design Patterns\Design Patterns\bin\Debug\net6.0\Design Patterns.deps.json
+E:\A1Programming\Training Coding\Design Patterns\Design Patterns\bin\Debug\net6.0\Design Patterns.runtimeconfig.json
+E:\A1Programming\Training Coding\Design Patterns\Design Patterns\bin\Debug\net6.0\Design Patterns.dll
+E:\A1Programming\Training Coding\Design Patterns\Design Patterns\bin\Debug\net6.0\Design Patterns.pdb
+E:\A1Programming\Training Coding\Design Patterns\Design Patterns\obj\Debug\net6.0\Design Patterns.csproj.AssemblyReference.cache
+E:\A1Programming\Training Coding\Design Patterns\Design Patterns\obj\Debug\net6.0\Design Patterns.GeneratedMSBuildEditorConfig.editorconfig
+E:\A1Programming\Training Coding\Design Patterns\Design Patterns\obj\Debug\net6.0\Design Patterns.AssemblyInfoInputs.cache
+E:\A1Programming\Training Coding\Design Patterns\Design Patterns\obj\Debug\net6.0\Design Patterns.AssemblyInfo.cs
+E:\A1Programming\Training Coding\Design Patterns\Design Patterns\obj\Debug\net6.0\Design Patterns.csproj.CoreCompileInputs.cache
+E:\A1Programming\Training Coding\Design Patterns\Design Patterns\obj\Debug\net6.0\Design Patterns.dll
+E:\A1Programming\Training Coding\Design Patterns\Design Patterns\obj\Debug\net6.0\refint\Design Patterns.dll
+E:\A1Programming\Training Coding\Design Patterns\Design Patterns\obj\Debug\net6.0\Design Patterns.pdb
+E:\A1Programming\Training Coding\Design Patterns\Design Patterns\obj\Debug\net6.0\Design Patterns.genruntimeconfig.cache
+E:\A1Programming\Training Coding\Design Patterns\Design Patterns\obj\Debug\net6.0\ref\Design Patterns.dll
