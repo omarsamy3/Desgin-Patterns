@@ -1,4 +1,5 @@
-﻿using Design_Patterns.Singleton_Pattern;
+﻿using Design_Patterns.Prototype_Pattern;
+using Design_Patterns.Singleton_Pattern;
 using System;
 
 namespace MyApp // Note: actual namespace depends on the project name.
@@ -10,7 +11,12 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
             #region Singleton Pattern
             //OneThread();
-            MultiThreading();
+            //MultiThreading();
+            #endregion
+
+            #region Prototype Pattern
+            //ShallowCopy();
+            //DeepCopy();
             #endregion
         }
 
@@ -18,7 +24,6 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
         public static void OneThread()
         {
-            #region One Thread
             Counter counter = Counter.GetInstance();
             Console.WriteLine(counter.count);
             counter.AddOne();
@@ -30,13 +35,10 @@ namespace MyApp // Note: actual namespace depends on the project name.
             Console.WriteLine(counter0.count);
             counter0.AddOne();
             Console.WriteLine(counter0.count);
-            #endregion
         }
 
         public static void MultiThreading()
         {
-            #region Multihreading
-
             Task Task1 = Task.Factory.StartNew(() =>
             {
                 Counter counter1 = Counter.GetInstance();
@@ -53,8 +55,69 @@ namespace MyApp // Note: actual namespace depends on the project name.
             });
 
             Console.ReadKey();
-            #endregion
         }
+
+        #endregion
+
+    #region Prototype Pattern
+        #region Shallow Copy
+        public static void ShallowCopy()
+        {
+            EmployeePrototype TempEmp1 = new TempEmployee();
+            TempEmp1.Name = "temp employee 1";
+            TempEmp1.Id = 1;
+            TempEmp1.EmpAddress = new Address
+            { City = "city 1", Building = "B1", StreetName = "street name" };
+
+            EmployeePrototype TempEmp2 = TempEmp1.ShallowCopy();
+
+            Console.WriteLine("============ Temp Emp 1 Original Values =============");
+            Console.WriteLine(TempEmp1.ToString());
+            Console.WriteLine("============ Temp Emp 2 Original Values =============");
+            Console.WriteLine(TempEmp2.ToString());
+
+
+            Console.WriteLine("====================================================");
+            //Change the reference object data leads to change the original object due to the shallow copy.
+            TempEmp2.EmpAddress.City = "New City";
+            Console.ForegroundColor = ConsoleColor.Cyan;
+
+            Console.WriteLine("============ Temp Emp 1 After Change =============");
+            Console.WriteLine(TempEmp1.ToString());
+            Console.WriteLine("============ Temp Emp 2 After Change =============");
+            Console.WriteLine(TempEmp2.ToString());
+        }
+
+        #endregion
+        #region Deep Copy
+        public static void DeepCopy()
+        {
+            EmployeePrototype TempEmp1 = new TempEmployee();
+            TempEmp1.Name = "temp employee 1";
+            TempEmp1.Id = 1;
+            TempEmp1.EmpAddress = new Address
+            { City = "city 1", Building = "B1", StreetName = "street name" };
+
+            EmployeePrototype TempEmp2 = TempEmp1.DeepCopy();
+
+            Console.WriteLine("============ Temp Emp 1 Original Values =============");
+            Console.WriteLine(TempEmp1.ToString());
+            Console.WriteLine("============ Temp Emp 2 Original Values =============");
+            Console.WriteLine(TempEmp2.ToString());
+
+
+            Console.WriteLine("====================================================");
+            //Change the reference object data leads to No Change in the original object due to the deep copy.
+            TempEmp2.EmpAddress.City = "New City";
+            Console.ForegroundColor = ConsoleColor.Cyan;
+
+            Console.WriteLine("============ Temp Emp 1 After Change =============");
+            Console.WriteLine(TempEmp1.ToString());
+            Console.WriteLine("============ Temp Emp 2 After Change =============");
+            Console.WriteLine(TempEmp2.ToString());
+        }
+
+        #endregion
 
         #endregion
 
