@@ -1,8 +1,10 @@
-﻿using Design_Patterns.Prototype_Pattern;
+﻿using Design_Patterns.Builder_Pattern;
+using Design_Patterns.Prototype_Pattern;
 using Design_Patterns.Singleton_Pattern;
 using System;
+using System.Security.AccessControl;
 
-namespace MyApp // Note: actual namespace depends on the project name.
+namespace Design_Patterns
 {
     internal class Program
     {
@@ -17,6 +19,10 @@ namespace MyApp // Note: actual namespace depends on the project name.
             #region Prototype Pattern
             //ShallowCopy();
             //DeepCopy();
+            #endregion
+
+            #region Builder Pattern
+            //BuilderPattern();
             #endregion
         }
 
@@ -59,7 +65,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
         #endregion
 
-    #region Prototype Pattern
+        #region Prototype Pattern
         #region Shallow Copy
         public static void ShallowCopy()
         {
@@ -121,5 +127,24 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
         #endregion
 
+        #region Builder Pattern
+        public static void BuilderPattern()
+        {
+        Console.WriteLine("\t \t \t \t \t \t***Builder Pattern*** \n \n \n", Console.ForegroundColor = ConsoleColor.Yellow);
+            Director director = new Director();
+        IBuilder carBuilder = new Car("Jeep");
+        IBuilder motorCycleBuilder = new MotorCycle("Hoda");
+
+        //Making Car
+        director.Construct(carBuilder);
+            Product car = carBuilder.GetVehicle();
+        Console.WriteLine($"\t Car {car.Show()}");
+
+            //Making MotorCycle
+            director.Construct(motorCycleBuilder);
+            Product motorCycle = motorCycleBuilder.GetVehicle();
+        Console.WriteLine($"\t MotorCycle {motorCycle.Show()}");
+        }
+        #endregion
     }
 }
