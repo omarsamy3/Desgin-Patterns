@@ -10,5 +10,7 @@ namespace Design_Patterns.FactoryPattern
     {
         //Return the kind of bank dealing with.
         IBank GetBank(string bankCode);
+
+        IPaymentCard GetPaymentCard(string cardNumber);
     }
 }

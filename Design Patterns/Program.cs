@@ -28,7 +28,8 @@ namespace Design_Patterns
             #endregion
 
             #region Factory Pattern
-            OriginalFactoryPattern();
+           //OriginalFactoryPattern();
+           AbstractFactoryPattern();
             #endregion
         }
 
@@ -161,6 +162,8 @@ namespace Design_Patterns
             string cardNumber = null;
             int cardNum;
             bool ParsedToInt = false; 
+            
+            //This label to goto if the code does not follow any bank.
             AskForCode:
             do
             {
@@ -190,7 +193,38 @@ namespace Design_Patterns
         #region Abstract
         public static void AbstractFactoryPattern()
         {
+            string cardNumber = null;
+            int cardNum;
+            bool ParsedToInt = false;
 
+        //This label to goto if the code does not follow any bank.
+        AskForCode:
+            do
+            {
+                Console.Write("Enter your card number: ");
+                cardNumber = Console.ReadLine();
+                ParsedToInt = int.TryParse(cardNumber, out cardNum);
+            }
+            while (String.IsNullOrEmpty(cardNumber) || cardNumber.Length < 6 || !ParsedToInt);
+
+
+            string bankCode = cardNumber.Substring(0, 6);
+            string cardkind = cardNumber.Substring(0, 2);
+
+            BankFactory bankFactory = new BankFactory();
+            IBank bank = bankFactory.GetBank(bankCode);
+            IPaymentCard paymentCard = bankFactory.GetPaymentCard(cardkind);
+
+            if (bank != null || paymentCard != null)
+            {
+                Console.WriteLine(bank.WithDraw());
+                Console.WriteLine("Card Name: " + paymentCard.GetName() + "\n Provider Info: " + paymentCard.GetProviderInfo());
+            }
+            else
+            {
+                Console.WriteLine("This bank is not found");
+                goto AskForCode;
+            }
         }
         #endregion
         #endregion
