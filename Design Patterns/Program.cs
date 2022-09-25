@@ -1,7 +1,9 @@
 ﻿using Design_Patterns.Builder_Pattern;
+using Design_Patterns.FactoryPattern;
 using Design_Patterns.Prototype_Pattern;
 using Design_Patterns.Singleton_Pattern;
 using System;
+using System.Reflection.Emit;
 using System.Security.AccessControl;
 
 namespace Design_Patterns
@@ -23,6 +25,10 @@ namespace Design_Patterns
 
             #region Builder Pattern
             //BuilderPattern();
+            #endregion
+
+            #region Factory Pattern
+            OriginalFactoryPattern();
             #endregion
         }
 
@@ -145,6 +151,48 @@ namespace Design_Patterns
             Product motorCycle = motorCycleBuilder.GetVehicle();
         Console.WriteLine($"\t MotorCycle {motorCycle.Show()}");
         }
+        #endregion
+
+        #region Factory Pattern
+        
+        #region Original
+        public static void OriginalFactoryPattern()
+        {
+            string cardNumber = null;
+            int cardNum;
+            bool ParsedToInt = false; 
+            AskForCode:
+            do
+            {
+                Console.Write("Enter your card number: ");
+                cardNumber = Console.ReadLine();
+                ParsedToInt = int.TryParse(cardNumber, out cardNum);
+            }
+            while (String.IsNullOrEmpty(cardNumber) || cardNumber.Length < 6 || !ParsedToInt);
+
+            
+            string bankCode = cardNumber.Substring(0, 6);
+
+            BankFactory bankFactory = new BankFactory();
+            IBank bank = bankFactory.GetBank(bankCode);
+
+            if (bank != null)
+                Console.WriteLine(bank.WithDraw());
+
+            else
+            {
+                Console.WriteLine("This bank is not found");
+                goto AskForCode;
+            }
+        }
+        #endregion
+
+        #region Abstract
+        public static void AbstractFactoryPattern()
+        {
+
+        }
+        #endregion
         #endregion
     }
 }
