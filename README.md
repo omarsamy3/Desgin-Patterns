@@ -21,7 +21,7 @@ This is a training repo to implement different kinds of design patterns for prac
 `Create object without exposing the creation logic to the client and refer to newly created object using a common interface`.<br>
 >> Make an interface to be implemented by the different kinds of classes and to be used to make the loginc needed by another class with will make the required logic.
 ### Abstract Factory Pattern
->> Make the Factory class deal with different classes to include their functions and call the facory object only one time to use for different cases.
+>> Make the Factory class deal with different classes to include their functions and call the facory object only one time to use for different cases.<br>
 <hr>
 ## Structural  Patterns:- 
 ### 1. Proxy Pattern
