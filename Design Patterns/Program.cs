@@ -2,7 +2,9 @@
 using Design_Patterns.FactoryPattern;
 using Design_Patterns.Prototype_Pattern;
 using Design_Patterns.Singleton_Pattern;
+using Design_Patterns.StructuralPatterns.ProxyPattern;
 using System;
+using System.Reflection;
 using System.Reflection.Emit;
 using System.Security.AccessControl;
 
@@ -12,6 +14,7 @@ namespace Design_Patterns
     {
         static void Main(string[] args)
         {
+            #region Creational Patterns
 
             #region Singleton Pattern
             //OneThread();
@@ -28,10 +31,20 @@ namespace Design_Patterns
             #endregion
 
             #region Factory Pattern
-           //OriginalFactoryPattern();
-           AbstractFactoryPattern();
+            //OriginalFactoryPattern();
+            //AbstractFactoryPattern();
+            #endregion
+
+            #endregion
+
+            #region Structural Patterns
+            #region Proxy Pattern
+            ProxyPattern();
+            #endregion
             #endregion
         }
+
+        #region Creational Patterns
 
         #region Singleton Pattern
 
@@ -160,7 +173,6 @@ namespace Design_Patterns
         public static void OriginalFactoryPattern()
         {
             string cardNumber = null;
-            int cardNum;
             bool ParsedToInt = false; 
             
             //This label to goto if the code does not follow any bank.
@@ -169,7 +181,7 @@ namespace Design_Patterns
             {
                 Console.Write("Enter your card number: ");
                 cardNumber = Console.ReadLine();
-                ParsedToInt = int.TryParse(cardNumber, out cardNum);
+                ParsedToInt = int.TryParse(cardNumber, out int cardNum);
             }
             while (String.IsNullOrEmpty(cardNumber) || cardNumber.Length < 6 || !ParsedToInt);
 
@@ -218,13 +230,28 @@ namespace Design_Patterns
             if (bank != null || paymentCard != null)
             {
                 Console.WriteLine(bank.WithDraw());
-                Console.WriteLine("Card Name: " + paymentCard.GetName() + "\n Provider Info: " + paymentCard.GetProviderInfo());
+                Console.WriteLine("Card Name: " + paymentCard.GetName() + "\nProvider Info: " + paymentCard.GetProviderInfo());
             }
             else
             {
                 Console.WriteLine("This bank is not found");
                 goto AskForCode;
             }
+        }
+        #endregion
+        #endregion
+
+
+        #endregion
+        #region Structural Patterns
+        #region Proxy Pattern
+        public static void ProxyPattern()
+        {
+            SMSServiceProxy proxy = new SMSServiceProxy();
+            Console.WriteLine(proxy.SendSMS("12", "01123445464", "Message 1"));
+            Console.WriteLine(proxy.SendSMS("12", "01123445464", "Message 2"));
+            Console.WriteLine(proxy.SendSMS("12", "01123445464", "Message 3")); //Won't be sent.
+            
         }
         #endregion
         #endregion
