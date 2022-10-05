@@ -27,6 +27,6 @@ This is a training repo to implement different kinds of design patterns for prac
 ### 1. Proxy Pattern
 - Provide a surrogate or placeholder for another object to control access to it.
 `Like a gateway for an object` <br>
->> The client call the proxy instead of web service, so if the sevice changed, we deal with the proxy not the client `Remote Proxy`<br>
->> Get data from database using the proxy, and the client deal with the proxy not the database `Virtual Proxy`<br>
->>  Protect the object from the client to control it yourself away from the client`Protection Prox`.<br>
+>> The client call the proxy instead of web service, so if the service changed, we deal with the proxy not the client, `Remote Proxy`<br>
+>> Get data from database using the proxy, and the client deal with the proxy not the database, `Virtual Proxy`<br>
+>>  Protect the object from the client to control it yourself away from the client, `Protection Prox`.<br>
