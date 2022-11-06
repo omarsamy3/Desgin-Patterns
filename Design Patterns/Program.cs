@@ -2,6 +2,7 @@
 using Design_Patterns.FactoryPattern;
 using Design_Patterns.Prototype_Pattern;
 using Design_Patterns.Singleton_Pattern;
+using Design_Patterns.StructuralPatterns.DecoratorPattern;
 using Design_Patterns.StructuralPatterns.ProxyPattern;
 using System;
 using System.Reflection;
@@ -38,9 +39,15 @@ namespace Design_Patterns
             #endregion
 
             #region Structural Patterns
+
             #region Proxy Pattern
-            ProxyPattern();
+            //ProxyPattern();
             #endregion
+
+            #region Decorator Pattern
+            DecoratorPattern();
+            #endregion
+
             #endregion
         }
 
@@ -151,18 +158,18 @@ namespace Design_Patterns
         public static void BuilderPattern()
         {
         Console.WriteLine("\t \t \t \t \t \t***Builder Pattern*** \n \n \n", Console.ForegroundColor = ConsoleColor.Yellow);
-            Director director = new Director();
+        Director director = new Director();
         IBuilder carBuilder = new Car("Jeep");
-        IBuilder motorCycleBuilder = new MotorCycle("Hoda");
+        IBuilder motorCycleBuilder = new MotorCycle("Honda");
 
         //Making Car
         director.Construct(carBuilder);
-            Product car = carBuilder.GetVehicle();
+        Product car = carBuilder.GetVehicle();
         Console.WriteLine($"\t Car {car.Show()}");
 
-            //Making MotorCycle
-            director.Construct(motorCycleBuilder);
-            Product motorCycle = motorCycleBuilder.GetVehicle();
+        //Making MotorCycle
+        director.Construct(motorCycleBuilder);
+        Product motorCycle = motorCycleBuilder.GetVehicle();
         Console.WriteLine($"\t MotorCycle {motorCycle.Show()}");
         }
         #endregion
@@ -253,6 +260,24 @@ namespace Design_Patterns
             Console.WriteLine(proxy.SendSMS("12", "01123445464", "Message 3")); //Won't be sent.
             
         }
+        #endregion
+
+        #region Decorator Pattern
+
+        public static void DecoratorPattern()
+        {
+            //Make an object of a class inherites from SMSService.
+            ConcreteSMSService smsService = new ConcreteSMSService();
+
+            //Make an object of NotificationEmailDecorator to send an email if the sms be sent.
+            NotificationEmailDecorator emailDecorator = new NotificationEmailDecorator();
+
+            //Set the service to send the sms msg.
+            emailDecorator.SetService(smsService);
+            Console.WriteLine(emailDecorator.SendSMS("123", "011111", "Message1"));
+
+        }
+
         #endregion
         #endregion
     }
