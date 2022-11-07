@@ -2,6 +2,7 @@
 using Design_Patterns.FactoryPattern;
 using Design_Patterns.Prototype_Pattern;
 using Design_Patterns.Singleton_Pattern;
+using Design_Patterns.StructuralPatterns.AdapterPattern;
 using Design_Patterns.StructuralPatterns.DecoratorPattern;
 using Design_Patterns.StructuralPatterns.ProxyPattern;
 using System;
@@ -45,7 +46,13 @@ namespace Design_Patterns
             #endregion
 
             #region Decorator Pattern
-            DecoratorPattern();
+            //DecoratorPattern();
+            #endregion
+
+            #region Adapter Pattern
+            AdapterPatternBefore();
+            Console.WriteLine("******************************");
+            AdapterPatternAfter();
             #endregion
 
             #endregion
@@ -250,7 +257,9 @@ namespace Design_Patterns
 
 
         #endregion
+
         #region Structural Patterns
+
         #region Proxy Pattern
         public static void ProxyPattern()
         {
@@ -272,12 +281,69 @@ namespace Design_Patterns
             //Make an object of NotificationEmailDecorator to send an email if the sms be sent.
             NotificationEmailDecorator emailDecorator = new NotificationEmailDecorator();
 
-            //Set the service to send the sms msg.
+            //Set the service to send the sms msg, and send an email with this msg.
             emailDecorator.SetService(smsService);
             Console.WriteLine(emailDecorator.SendSMS("123", "011111", "Message1"));
 
         }
 
+        #endregion
+
+        #region Adapter Pattern
+        public static void AdapterPatternBefore()
+        {
+            //Make this obj to use in the salaryCalc function.
+            Employee emp = new Employee() { Name = "Employee1", BasicSalary = 1000 };
+
+            //Make this obj to use its function to calculate the employee salary.
+            SalaryCalculator EmpSalaryCalc = new SalaryCalculator();
+
+            //Return the employee salary.
+            var EmpSalary = EmpSalaryCalc.CalcSalary(emp);
+
+            Console.WriteLine($"The employee basic Salary is: {emp.BasicSalary}, but now it is: {EmpSalary}");
+
+            /*
+             What we will do if we have another class with similar data and we want to calc the salary, but the CalcSalary function
+            Need to pass an emp object.
+             */
+
+            MachineOperator machineOper = new MachineOperator() { Name = "Operater 1", BasicSalary = 2000, ShiftCode = "kr4l2jh252l6s" };
+
+            //EmpSalaryCalc.CalcSalary(machineOper); //Error
+
+            Employee empAdapter = new Employee() { Name = machineOper.Name, BasicSalary = machineOper.BasicSalary };
+
+            var MachineOperAdapted = EmpSalaryCalc.CalcSalary(empAdapter);
+
+            Console.WriteLine("Manual Adapting...");
+            Console.WriteLine($"The Machine basic Salary is: {empAdapter.BasicSalary}, but now it is: {MachineOperAdapted}");
+        }
+
+        public static void AdapterPatternAfter()
+        {
+            //Make this obj to use in the salaryCalc function.
+            Employee emp = new Employee() { Name = "Employee1", BasicSalary = 1000 };
+
+            //Make this obj to use its function to calculate the employee salary.
+            SalaryCalculator EmpSalaryCalc = new SalaryCalculator();
+
+            //Return the employee salary.
+            var EmpSalary = EmpSalaryCalc.CalcSalary(emp);
+
+            Console.WriteLine($"The employee basic Salary is: {emp.BasicSalary}, but now it is: {EmpSalary}");
+
+            MachineOperator machineOper = new MachineOperator() { Name = "Operater 1", BasicSalary = 2000, ShiftCode = "kr4l2jh252l6s" };
+
+            SalaryAdapter SalaryAdapterToMachine = new SalaryAdapter();
+
+            var MachineOperAdapted = SalaryAdapterToMachine.CalcSalary(machineOper);
+
+            Console.WriteLine("Automatic Adapting by using SalaryAdapter class...");
+            Console.WriteLine($"The Machine basic Salary is: {machineOper.BasicSalary}, but now it is: {MachineOperAdapted}");
+
+
+        }
         #endregion
         #endregion
     }
