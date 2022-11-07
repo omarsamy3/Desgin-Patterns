@@ -31,3 +31,11 @@ This is a training repo to implement different kinds of design patterns for prac
 >> Get data from database using the proxy, and the client deal with the proxy not the database `Virtual Proxy`<br>
 >> Protect the object from the client to control it yourself away from the client `Protection Proxy`.<br>
 
+### 2. Decorator Pattern
+>> Allows behavior to be added to an individual object, dynamically, without affecting the behavior of other objects from the same class. <br>
+>> The `decorator pattern` is often useful for adherting to the `Single Resposiblity Principle`,<br>
+as it allows functionality to be divided between classes with unique areas of concern.
+
+### 3. Adapter Pattern 
+>> Convert the interface of a class into another interface that clients expect.<br>
+>> The `Adapter pattern` lets classes work together that could not otherwise because of `incompatible interfaces`.
