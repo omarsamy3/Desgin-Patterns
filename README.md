@@ -39,3 +39,7 @@ as it allows functionality to be divided between classes with unique areas of co
 ### 3. Adapter Pattern 
 >> Convert the interface of a class into another interface that clients expect.<br>
 >> The `Adapter pattern` lets classes work together that could not otherwise because of `incompatible interfaces`.
+
+### 4. Facade Pattern
+>> Provide a unified interface to a set of interfaces in a subsystem. <br>
+>>`Facade` defines a higher-level interface that makes the subsystem easier to use.<br>
