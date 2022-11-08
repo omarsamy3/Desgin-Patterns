@@ -4,6 +4,7 @@ using Design_Patterns.Prototype_Pattern;
 using Design_Patterns.Singleton_Pattern;
 using Design_Patterns.StructuralPatterns.AdapterPattern;
 using Design_Patterns.StructuralPatterns.DecoratorPattern;
+using Design_Patterns.StructuralPatterns.FacadePattern;
 using Design_Patterns.StructuralPatterns.ProxyPattern;
 using System;
 using System.Reflection;
@@ -50,9 +51,11 @@ namespace Design_Patterns
             #endregion
 
             #region Adapter Pattern
-            AdapterPatternBefore();
-            Console.WriteLine("******************************");
-            AdapterPatternAfter();
+            //AdapterPattern();
+            #endregion
+
+            #region Facade Pattern
+            FacadePattern();
             #endregion
 
             #endregion
@@ -343,6 +346,56 @@ namespace Design_Patterns
             Console.WriteLine($"The Machine basic Salary is: {machineOper.BasicSalary}, but now it is: {MachineOperAdapted}");
 
 
+        }
+
+        public static void AdapterPattern()
+        {
+            AdapterPatternBefore();
+            Console.WriteLine("******************************");
+            AdapterPatternAfter();
+        }
+        #endregion
+
+        #region Facade Pattern
+        public static void FacadePatternBefore()
+        {
+            //Create basket
+            ShoppingBasket basket = new ShoppingBasket();
+            BasketItem item = new BasketItem() { ItemId = "123", ItemPrice = 50, Quantity = 3 };
+
+            //Check stock 
+            Inventory inventory = new Inventory();
+            if (inventory.CheckItemQuantity(item.ItemId, item.Quantity))
+                basket.AddItem(item);
+
+            //Create Inventory Order
+            InventoryOrder inventoryOrder = new InventoryOrder();
+            inventoryOrder.CreateOrder(basket);
+
+            //Create Invoice 
+            PurchaseInvoice invoice = new PurchaseInvoice();
+            var inv = invoice.CreateInvoice(basket, "address:132, id = 456, emai = x@gmai.com");
+
+            //Payment 
+            PaymentProcess payment = new PaymentProcess();
+            payment.HandlePayment(inv.netTotal, "acc = 123456789");
+
+            //Send SMS
+            SmsNotifications sms = new SmsNotifications();
+            sms.SendSms("123", "Invoice Created");
+        }
+        public static void FacadePattern()
+        {
+            //Create basket
+            ShoppingBasket basket = new ShoppingBasket();
+            BasketItem item1 = new BasketItem() { ItemId = "123", ItemPrice = 50, Quantity = 3 };
+            BasketItem item2 = new BasketItem() { ItemId = "124", ItemPrice = 60, Quantity = 5 };
+            basket.AddItem(item1);
+            basket.AddItem(item2);
+
+            //Create an order, using the facade layer(PurchaseOrder class).
+            PurchaseOrder Order = new PurchaseOrder();
+            Order.CreateOrder(basket, "name:omar, id:3, phoneNum:0111");
         }
         #endregion
         #endregion
