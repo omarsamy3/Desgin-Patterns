@@ -43,3 +43,7 @@ as it allows functionality to be divided between classes with unique areas of co
 ### 4. Facade Pattern
 >> Provide a unified interface to a set of interfaces in a subsystem. <br>
 >>`Facade` defines a higher-level interface that makes the subsystem easier to use.<br>
+
+### 5. Flyweight Pattern
+>> Use sharing to support large numbers of fine-grained objects efficiently.<br>
+`Flyweight`  lets you fit more objects into the available amount of RAM by sharing common parts of state between multiple objects instead of keeping all of the data in each object.<br>
