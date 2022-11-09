@@ -5,6 +5,7 @@ using Design_Patterns.Singleton_Pattern;
 using Design_Patterns.StructuralPatterns.AdapterPattern;
 using Design_Patterns.StructuralPatterns.DecoratorPattern;
 using Design_Patterns.StructuralPatterns.FacadePattern;
+using Design_Patterns.StructuralPatterns.FlyweightPattern;
 using Design_Patterns.StructuralPatterns.ProxyPattern;
 using System;
 using System.Reflection;
@@ -55,7 +56,11 @@ namespace Design_Patterns
             #endregion
 
             #region Facade Pattern
-            FacadePattern();
+            //FacadePattern();
+            #endregion
+
+            #region Flyweight Pattern
+            FlyweightPattern();
             #endregion
 
             #endregion
@@ -396,6 +401,16 @@ namespace Design_Patterns
             //Create an order, using the facade layer(PurchaseOrder class).
             PurchaseOrder Order = new PurchaseOrder();
             Order.CreateOrder(basket, "name:omar, id:3, phoneNum:0111");
+        }
+        #endregion
+
+        #region Flyweight Pattern
+        public static void FlyweightPattern()
+        {
+            DiscountCalaFactory discountFactory = new DiscountCalaFactory();
+            var calculator = discountFactory.GetDiscountCalc("day");
+            var val = calculator.GetDiscountValue(DateTime.Now.Date);
+            Console.WriteLine(val.ToString());
         }
         #endregion
         #endregion
