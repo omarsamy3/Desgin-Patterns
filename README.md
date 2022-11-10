@@ -47,3 +47,10 @@ as it allows functionality to be divided between classes with unique areas of co
 ### 5. Flyweight Pattern
 >> Use sharing to support large numbers of fine-grained objects efficiently.<br>
 `Flyweight`  lets you fit more objects into the available amount of RAM by sharing common parts of state between multiple objects instead of keeping all of the data in each object.<br>
+
+## Behavioral  Patterns:- 
+### 1. Chain of Responsibility Pattern (COR)
+- Can we make more than handler for a given request?
+- How can we handle a request using sequence of steps?
+>> Avoid coupling the sender of a request to its receiver by giving more than one object a chance to handle the request.<br>
+>> `Chain` the receiving objects and pass the request along the chain until an object handles it.<br>
