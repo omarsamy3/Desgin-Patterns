@@ -437,8 +437,9 @@ namespace Design_Patterns
             HREvalHandler hrevalHandler = new HREvalHandler();
             TechnicalEvalHandler techevalHandler = new TechnicalEvalHandler();
 
+            //Make the chain.
+            hrevalHandler.SetNext(techevalHandler);
             hrevalHandler.HandleRequest(jobApplication);
-            techevalHandler.HandleRequest(jobApplication);
 
             Console.WriteLine(jobApplication.Comments);
         }

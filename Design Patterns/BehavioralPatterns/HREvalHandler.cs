@@ -14,7 +14,8 @@ namespace Design_Patterns.BehavioralPatterns
             #region First handling scenario
             request.Comments.AppendLine("HR handler comment");
 
-            
+            if (_nextHandler != null) _nextHandler.HandleRequest(request);
+            else request.Comments.AppendLine("End at hr handler");
             #endregion
         }
     }
