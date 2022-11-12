@@ -1,4 +1,5 @@
-﻿using Design_Patterns.Builder_Pattern;
+﻿using Design_Patterns.BehavioralPatterns;
+using Design_Patterns.Builder_Pattern;
 using Design_Patterns.FactoryPattern;
 using Design_Patterns.Prototype_Pattern;
 using Design_Patterns.Singleton_Pattern;
@@ -11,6 +12,7 @@ using System;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Security.AccessControl;
+using System.Threading.Tasks.Sources;
 
 namespace Design_Patterns
 {
@@ -60,9 +62,15 @@ namespace Design_Patterns
             #endregion
 
             #region Flyweight Pattern
-            FlyweightPattern();
+            //FlyweightPattern();
             #endregion
 
+            #endregion
+
+            #region Behvioral Patterns
+            #region ChainOfResponsibility
+            COR();
+            #endregion
             #endregion
         }
 
@@ -413,6 +421,21 @@ namespace Design_Patterns
             Console.WriteLine(val.ToString());
         }
         #endregion
+        #endregion
+
+        #region Behavioral Patterns
+
+        #region ChainOfResponsibility
+        public static void COR()
+        {
+            JobApplication jobApplication = new JobApplication();
+            jobApplication.ApplicationName = "Omar";
+            jobApplication.JobTitle = "Great Job";
+            jobApplication.JobCode = "1234";
+            jobApplication.Comments = new System.Text.StringBuilder();
+        }
+        #endregion
+
         #endregion
     }
 }
