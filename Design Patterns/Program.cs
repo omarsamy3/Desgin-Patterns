@@ -431,7 +431,7 @@ namespace Design_Patterns
             JobApplication jobApplication = new JobApplication();
             jobApplication.ApplicationName = "Omar";
             jobApplication.JobTitle = "Great Job";
-            jobApplication.JobCode = "1234";
+            jobApplication.JobCode = "123";
             jobApplication.Comments = new System.Text.StringBuilder();
 
             HREvalHandler hrevalHandler = new HREvalHandler();

@@ -11,11 +11,15 @@ namespace Design_Patterns.BehavioralPatterns
     {
         public override void HandleRequest(JobApplication request)
         {
-            #region First handling scenario
+            #region second handling scenario
+            if(request.JobCode == "123")
             request.Comments.AppendLine("HR handler comment");
-
-            if (_nextHandler != null) _nextHandler.HandleRequest(request);
-            else request.Comments.AppendLine("End at hr handler");
+            else
+            {
+                if (_nextHandler != null) _nextHandler.HandleRequest(request);
+                else request.Comments.AppendLine("End at hr handler");
+            }
+            
             #endregion
         }
     }
