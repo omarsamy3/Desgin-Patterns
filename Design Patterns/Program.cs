@@ -433,6 +433,14 @@ namespace Design_Patterns
             jobApplication.JobTitle = "Great Job";
             jobApplication.JobCode = "1234";
             jobApplication.Comments = new System.Text.StringBuilder();
+
+            HREvalHandler hrevalHandler = new HREvalHandler();
+            TechnicalEvalHandler techevalHandler = new TechnicalEvalHandler();
+
+            hrevalHandler.HandleRequest(jobApplication);
+            techevalHandler.HandleRequest(jobApplication);
+
+            Console.WriteLine(jobApplication.Comments);
         }
         #endregion
 
